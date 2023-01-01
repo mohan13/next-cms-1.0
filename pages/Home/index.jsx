@@ -24,17 +24,21 @@ const Index = ({ TData }) => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <Layout>
-      <div>
-        <Headline Headline={"Dashboard"} />
-        <div className="px-6">
-          <Table TData={currentPosts} />
+      <div className="flex flex-col h-screen justify-between">
+        <div>
+          <Headline Headline={"Dashboard"} />
+          <div className="px-6">
+            <Table TData={currentPosts} />
+          </div>
+        </div>
+        <div className="mb-6">
+          <Pagination
+            PostsPerPage={postsPerPage}
+            totalPosts={TData.length}
+            paginate={paginate}
+          />
         </div>
       </div>
-      <Pagination
-        PostsPerPage={postsPerPage}
-        totalPosts={TData.length}
-        paginate={paginate}
-      />
     </Layout>
   );
 };
